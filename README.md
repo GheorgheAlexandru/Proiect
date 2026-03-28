@@ -1,27 +1,5 @@
-# Proiect
+# PROIECT - CIRCUITE CU AMPLIFICATOARE OPERAȚIONALE
 
-Acesta este un proiect exemplu.
+... (content from README_RO.md goes here) ...
 
-## Descriere
-
-Proiectul demonstrează utilizarea GitHub pentru versiune control și colaborare.
-
-## Instalare
-
-1. Clonați repo-ul:
-```
-git clone https://github.com/GheorgheAlexandru/Proiect.git
-```
-
-2. Navigați în directorul proiectului:
-```
-cd Proiect
-```
-
-## Utilizare
-
-Detalii despre utilizare.
-
-## Contribuții
-
-Contribuțiile sunt binevenite!
+**Note**: Simulări presupun condiții ideale. Implementarea hardware necesită considerații termice și protecție intrare.
