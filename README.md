@@ -220,9 +220,8 @@ Proiect/
 ├── Draft3.asc      ← Analiză Parametrică Guadagn
 ├── Draft4.asc      ← Detector Vârf cu Diodă Ideală
 ├── Proiect.pdf     ← Documentație completă
-├── README.md       ← Documentație Engleză
-└── README_RO.md    ← Documentație Română (ACEST FIȘIER)
-```
+├── README.md       ← Documentație 
+
 
 ---
 
