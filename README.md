@@ -1,24 +1,41 @@
-# Project Title
+# README.md
 
-## Description
-This project aims to provide a detailed circuit design with specifications and implementations.
+## DESCRIERE GENERALĂ
 
-## Installation
-To install this project, simply clone the repository to your local machine using Git.
+Despre proiectul nostru...
 
-```bash
-git clone https://github.com/GheorgheAlexandru/Proiect.git
-```
+## CIRCUITELE SISTEMULUI (DRAFT1-4)
 
-## Usage
-Follow these guidelines to start using the project:
-1. Navigate to the project directory.
-2. Run the necessary command to execute your main program.
+Detalii despre circuitele sistemului...
 
-## Circuit Specifications
-- Voltage: 5V
-- Current: 2A
-- Components: Resistor, Capacitor, Transistor
+## FLUXUL COMPLET
 
-## Credits
-Thanks to all contributors who helped in the development of this project.
+Descrierea fluxului complet al sistemului...
+
+## FORMULE
+
+Formulele utilizate in proiect...
+
+## CONEXIUNI FIZICE
+
+Conexiunile fizice ale componentelor...
+
+## PERFORMANȚĂ
+
+Performanța sistemului...
+
+## FIȘIERE PROIECT
+
+Fișierele relevante pentru proiect...
+
+## SIMULARE
+
+Informații despre simulări...
+
+## CARACTERISTICI OP482
+
+Detalii despre op amp OP482...
+
+## REZULTATE AȘTEPTATE
+
+Rezultatele așteptate ale proiectului...
