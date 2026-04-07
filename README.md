@@ -14,8 +14,7 @@ Patru etaje cascadate care procesează și amplifică semnale mici, cu compensar
 
 ## 📊 CIRCUITELE SISTEMULUI
 
-### **DRAFT1 -Amplificator de instrumentatie V-V cu 3 AO cu
-intrari diferentiale**
+### **DRAFT1 -Amplificator de instrumentatie V-V cu 3 AO cu intrari diferentiale **
 
 **Rolul**: Amplificare inițială cu inversie de fază
 
@@ -47,8 +46,7 @@ fc = 1/(2πRC) = 1/(2π × 2kΩ × 18.8nF) ≈ 4.24 MHz
 
 ---
 
-### **DRAFT3 - PGA , switch-uri in calea de semnal, conexiune
-serie**
+### **DRAFT3 - PGA , switch-uri in calea de semnal, conexiune serie**
 
 **Rolul**: Ajustare parametrică Gain cu toleranță
 
