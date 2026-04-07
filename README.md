@@ -14,7 +14,8 @@ Patru etaje cascadate care procesează și amplifică semnale mici, cu compensar
 
 ## 📊 CIRCUITELE SISTEMULUI
 
-### **DRAFT1 - AMPLIFICATOR SUMATOR (3 Etaje)**
+### **DRAFT1 -Amplificator de instrumentatie V-V cu 3 AO cu
+intrari diferentiale**
 
 **Rolul**: Amplificare inițială cu inversie de fază
 
@@ -22,18 +23,12 @@ Patru etaje cascadate care procesează și amplifică semnale mici, cu compensar
 |-----------|---------|
 | Componente | 3× OP482, rezistori (6.8kΩ, 10kΩ) |
 | Alimentare | ±5V |
-| Guadagn | -1.47 per etaj |
-| Guadagn Total | **-3.18 V/V (10.05 dB)** |
 | Impedanța intrare | 10kΩ |
 
-**Formula Guadagn:**
-```
-G = -Rf/Rin = -10kΩ/6.8kΩ ≈ -1.47
-```
 
 ---
 
-### **DRAFT2 - AMPLIFICATOR CASCADAT (3 Etaje non-invertoare)**
+### **DRAFT2 - Filtru trece jos cu 3 AO V-V KHN**
 
 **Rolul**: Amplificare secundară cu stabilitate frecvență
 
@@ -41,15 +36,9 @@ G = -Rf/Rin = -10kΩ/6.8kΩ ≈ -1.47
 |-----------|---------|
 | Componente | 3× OP482, rezistori (2kΩ), condensatori (18.8nF, 21.1nF) |
 | Alimentare | ±5V |
-| Guadagn per etaj | 2 V/V |
-| Guadagn Total | **8 V/V (18.06 dB)** |
 | Lățime bandă -3dB | **3.77 MHz** |
 | Intrare | ← OUT Draft1 |
 
-**Formula Guadagn Non-Invertor:**
-```
-G = 1 + Rf/Rg = 1 + 2kΩ/2kΩ = 2
-```
 
 **Frecvența de Tăiere:**
 ```
@@ -58,17 +47,18 @@ fc = 1/(2πRC) = 1/(2π × 2kΩ × 18.8nF) ≈ 4.24 MHz
 
 ---
 
-### **DRAFT3 - AMPLIFICATOR INVERTOR VARIABIL**
+### **DRAFT3 - PGA , switch-uri in calea de semnal, conexiune
+serie**
 
-**Rolul**: Ajustare parametrică guadagn cu toleranță
+**Rolul**: Ajustare parametrică Gain cu toleranță
 
 | Parametru | Valoare |
 |-----------|---------|
 | Componente | 1× OP482, R1=10kΩ, R2=variabil |
 | Alimentare | ±5V |
 | R2 Range | 11.2kΩ → 22.39kΩ |
-| Guadagn Min | -1.12 V/V (0.98 dB) |
-| Guadagn Max | -2.24 V/V (7.01 dB) |
+| Gain Min | -1.12 V/V (0.98 dB) |
+| Gain Max | -2.24 V/V (7.01 dB) |
 | Intrare | ← OUT Draft2 |
 
 **Tabel Parametric:**
@@ -92,48 +82,8 @@ fc = 1/(2πRC) = 1/(2π × 2kΩ × 18.8nF) ≈ 4.24 MHz
 | Alimentare | ±15V |
 | Topologie | Perfect Diode (compensare cădere) |
 | Timp constantă | τ = RC = 155 ns |
-| Guadagn | 1 V/V (unity buffer) |
 | Cădere diodă | **~0V** (vs 0.7V standard) |
 | Intrare | ← OUT Draft3 |
-
----
-
-## 🔗 FLUXUL COMPLET AL SISTEMULUI
-
-```
-INPUT (1mV)
-   ↓
-┌─────────────────────────────────────────────────────────────┐
-│ DRAFT1: Amplificator Sumator                                │
-│ • 3 etaje invertoare                                        │
-│ • Guadagn: -3.18                                            │
-│ • Output: ±3.18 mV                                          │
-└─────────────────────────────────────────────────────────────┘
-   ↓ (impedanță interfață: Zin = 1MΩ)
-┌─────────────────────────────────────────────────────────────┐
-│ DRAFT2: Amplificator Cascadat cu Compensare                 │
-│ • 3 etaje non-invertoare                                    │
-│ • Guadagn: 8                                                │
-│ • BW: 3.77 MHz                                              │
-│ • Output: ±25.4 mV                                          │
-└─────────────────────────────────────────────────────────────┘
-   ↓ (impedanță interfață: Zin = 10kΩ)
-┌─────────────────────────────────────────────────────────────┐
-│ DRAFT3: Amplificator Invertor Variabil                      │
-│ • Selectabil: 11.2kΩ ... 22.39kΩ                           │
-│ • Guadagn: -1.12 la -2.24                                   │
-│ • Output: ±28.5 mV (max)                                    │
-└─────────────────────────────────────────────────────────────┘
-   ↓ (impedanță interfață: Zin = 1MΩ)
-┌─────────────────────────────────────────────────────────────┐
-│ DRAFT4: Detector Vârf - Diodă Ideală                        │
-│ • Detecție valoare pic                                      │
-│ • Ținere semnal (capacitor)                                 │
-│ • Output stabil: Vârf detectat ≈ 28.5 mV                   │
-└─────────────────────────────────────────────────────────────┘
-   ↓
-OUTPUT FINAL (Semnal vârf stabil)
-```
 
 ---
 
@@ -155,11 +105,6 @@ Zin ≈ > 1 MΩ
 ```
 fc = 1/(2πRC)
 |H(f)| = 1/√(1 + (f/fc)²)
-```
-
-### Produsul Guadagn × Lățime de Bandă
-```
-GBW = |Guadagn| × BW = 5 MHz (OP482)
 ```
 
 ---
@@ -197,19 +142,15 @@ OUT (Draft3) ──[1MΩ impedanță]──→ INPUT Draft4
 
 **Semnal de intrare: 1mV AC @ 1kHz**
 
-| Etapă | Intrare | Ieșire | Guadagn |
-|-------|---------|--------|---------|
-| Draft1 | 1mV | ±3.18mV | -3.18 |
-| Draft2 | 3.18mV | ±25.4mV | 8 |
-| Draft3 | 25.4mV | ±28.5mV | -1.12..−2.24 |
-| Draft4 | 28.5mV | **Vârf: 28.5mV** | 1 |
+| Etapă | Intrare | Ieșire | 
+|-------|---------|--------|
+| Draft1 | 1mV | ±3.18mV   | 
+| Draft2 | 3.18mV | ±25.4mV|
+| Draft3 | 25.4mV | ±28.5mV|
+| Draft4 | 28.5mV | **Vârf: 28.5mV** |
 
-**Guadagn Total Cascadat:**
-```
-G_total = (-3.18) × 8 × (-1.77) × 1 ≈ 44.9 (33.05 dB)
-```
 
----
+
 
 ## 📋 FIȘIERE PROIECT
 
@@ -217,12 +158,9 @@ G_total = (-3.18) × 8 × (-1.77) × 1 ≈ 44.9 (33.05 dB)
 Proiect/
 ├── Draft1.asc      ← Amplificator Sumator (3-etaje, ±5V)
 ├── Draft2.asc      ← Amplificator Cascadat cu Compensare
-├── Draft3.asc      ← Analiză Parametrică Guadagn
+├── Draft3.asc      ← Analiză Parametrică 
 ├── Draft4.asc      ← Detector Vârf cu Diodă Ideală
 ├── Proiect.pdf     ← Documentație completă
-├── README.md       ← Documentație Engleză
-└── README_RO.md    ← Documentație Română (ACEST FIȘIER)
-```
 ├── README.md       ← Documentație 
 
 
@@ -262,17 +200,6 @@ Click dreapta pe componentă → Edit → Schimbă valori
 | Curent bias | 60 pA |
 | CMRR | > 80 dB |
 | Alimentare | ±5V la ±18V |
-
----
-
-## ✅ REZULTATE AȘTEPTATE
-
-✓ **Draft1**: Amplificare cu inversie  
-✓ **Draft2**: Amplificare mare + stabilitate frecvență  
-✓ **Draft3**: Ajustare guadagn selector  
-✓ **Draft4**: Detecție vârf semnal final  
-
-✓ **Sistem complet**: Procesare semnal mic → Output stabil
 
 ---
 
