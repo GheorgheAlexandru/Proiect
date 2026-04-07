@@ -72,7 +72,7 @@ serie**
 
 ---
 
-### **DRAFT4 - DETECTOR DE VÂRF (Diodă Ideală)**
+### **DRAFT4 - REDRESOR DETECTOR DE VÂRF (Diodă Ideală)**
 
 **Rolul**: Detecție și ținere valoare vârf
 
